@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>LogIn Page</title>
+    <style>
+      body {
+        background-color: white;
+        font-family: ariel, sans-serif;
+        text-align: center;
+      }
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+    
+        margin: 50px auto;
+        width: 400px;
+        border: 2px solid black;
+      }
+      
+      input[type="text"], input[type="password"], input[type="email"] {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 70%;
+        border-radius: 5px;
+        border: 2px solid black;
+        box-shadow: 2px 2px 5px lightblue;
+      }
+    
+      .password-container {
+        position: relative;
+      }
+    
+      .password-icon {
+        position: absolute;
+        top: 25%;
+        right: 60px;
+        cursor: pointer;
+        font-size: 12px;
+        font-style: normal;
+      }
+    
+      input[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 2px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      
+      a {
+        color: blue;
+        text-decoration: none;
+      }
+      
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="login.php" method="POST">
+      <h2>Login Form</h2>
+      <input type="email" name="email_id" id="emailId" placeholder="Email Id" required><br><br>
+      <div class="password-container">
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <i class="password-icon" onclick="togglePassword()">Show Password</i>
+      </div><br><br>
+      <input type="submit" value="LogIn"><br><br>
+      <p>New User? <a href="create.html">Register your account</a></p>
+    </form>
+    <script>
+      function togglePassword() {
+        var passwordInput = document.getElementById("password");
+        var icon = document.querySelector(".password-icon");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          icon.innerHTML = "Hide Password";
+        } else {
+          passwordInput.type = "password";
+          icon.innerHTML = "Show Password";
+        }
+      }
+    </script>
+  </body>
+</html>    

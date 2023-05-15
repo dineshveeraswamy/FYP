@@ -1,0 +1,197 @@
+/* Global styles */
+body {
+    margin: auto;
+    font-family: 'Times New Roman';
+    
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .navbar a:hover {
+    color: #ddd;
+  }
+  
+  /* Chat box styles */
+  .chat-box {
+    position: fixed;
+    left: 10px;
+    top:190px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .chat-header h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .close-chat-link {
+    color: white;
+    text-decoration:none;
+    font-size: 14px;
+  }
+  
+  .close-chat-link:hover {
+    color: #ddd;
+  }
+  
+  .chat-messages {
+    height: 275px;
+    overflow-y: scroll;
+    padding: 10px;
+  }
+  
+  .chat-messages p {
+    margin: 0;
+    padding: 5px 0;
+  }
+  
+  /* Chat form styles */
+  .chat-form {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .chat-form input[type="text"] {
+    flex-grow: 1;
+    height: 15px;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px 10px;
+    font-size: 16px;
+  }
+  
+  .chat-form input[type="submit"] {
+    height: 35px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .chat-form input[type="submit"]:hover {
+    background-color: #444;
+  }
+  
+  /* Hide the chat box by default */
+  .chat-box {
+    display: none;
+  }
+  
+  .displayName {
+    font-size: 18px;
+    font-family: 'Comic Sans MS';
+    color: blanchedalmond;
+  }
+  
+  .logout-btn {
+    font-family: 'Times New Roman';
+    font-size: 14px;
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .logout-btn:hover {
+    background-color: blanchedalmond;
+  }
+  
+  .aboutus-content{
+    font-family:'Times New Roman', Times, serif;
+    text-align:justify;
+    margin: auto;
+    width: 1000px;
+    font-size: 16px;
+    position: relative;
+  }
+  
+  .container{
+    display:grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+    background-color: aliceblue;
+  }
+  
+  
+  
+  .lastline{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    background-color:lavender;
+  }
+  
+  .image{
+  
+    max-width: 100%;
+    max-height:100%;
+    margin:10px 10px;
+    padding:5px 5px;
+  }
+  
+  .container2{
+    background-color: antiquewhite;
+  }
+  
+  .text{
+    width:600px;
+    text-align: justify;
+    padding:10px 30px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: aliceblue;
+  }
+  
+  .heading{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Register your Account</title>
+    <style>
+      body {
+        background-color: white;
+        font-family: ariel, sans-serif;
+        font-size: 14px;
+        text-align: center;
+      }
+
+	/* Style for radio buttons */
+.radio {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+/* Style for radio button input */
+.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Style for radio button circle */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* Style for radio button text */
+.radio label {
+  margin-left: 10px;
+}
+
+/* Style for checked radio button */
+.radio input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Style for checked radio button dot */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show dot for checked radio button */
+.radio input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style for checked radio button dot */
+.radio .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+      
+      form {
+        background-color: white;
+        padding: 20px;
+	  font-size: 16px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px gray;
+        margin: 50px auto;
+        width: 400px;
+        border: solid black;
+      }
+      
+      input[type="text"], input[type="number"], input[type="password"], input[type="radio"] {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid black;
+        box-shadow: 2px 2px 5px gray;
+      }
+
+	
+	 input[type="email"], input[type="number"], input[type="password"], input[type="radio"] {
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid black;
+        box-shadow: 2px 2px 5px gray;
+	}
+      
+      input[type="button"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      
+
+	 input[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+
+	input[type="radio"] {
+	transform: scale(0.8);
+	}
+
+      
+      h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      
+      a {
+        color: blue;
+        text-decoration: none;
+      }
+
+      .length{
+        font-size: 12px;
+        color: red;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <form action="register.php" method="POST" id="registration-form">
+      <h2>Registration Form</h2>
+      <label for="name"><b>Enter your full name: </b></label><br>
+      <input type="text" id ="name" name="name" pattern="[A-Z a-z]+" required><br><br>
+      <b>Enter your age: </b><br>
+      <input type="number" name="age" required><br><br>
+	<b>Enter your Phone number:</b><br>
+	<input type="number" name="number" required><br><br>
+      <b>Enter your Email Id: </b><br>
+      <input type="email" name="email_id" required><br><br>
+      <b>Create your password: </b><br>
+      <div class="length"><b>Password length must be between 8 and 20 characters *</b></div>
+      <input type="password" id="password1" name="password" required><br><br>
+      <b>Confirm your password: </b><br>
+      <input type="password" id="password2" name="re_password" required><br><br>
+
+  
+<div>
+  <p><b>Gender:</b></p>
+  <label class="radio">
+    <input type="radio" name="gender" value="male">
+    <span class="checkmark"></span>
+    <span>Male</span>
+  </label>
+  <label class="radio">
+    <input type="radio" name="gender" value="female">
+    <span class="checkmark"></span>
+    <span>Female</span>
+  </label>
+<label class="radio">
+    <input type="radio" name="gender" value="other">
+    <span class="checkmark"></span>
+    <span>Other</span>
+  </label>
+<br>
+<input type="submit" value="Next" onclick="if(validateForm()) { window.location.href='droplist.html'; }">
+
+	 <input type="button" value="Clear" onclick="clearForm()"><br><br>
+      <a href='login.html'> Go Back </a>
+    </form>
+
+    <script>
+
+function validateForm() {
+  let  name = document.forms["registration-form"]["name"].value;
+  let password1 = document.forms["registration-form"]["password"].value;
+  let password2 = document.forms["registration-form"]["re_password"].value;
+  let gender = document.querySelector('input[name="gender"]:checked');
+  let age = document.forms["registration-form"]["age"].value;
+  let email = document.forms["registration-form"]["email_id"].value;
+  let letters = /^[A-Z a-z]+$/;
+
+  if (!name.match(letters)) {
+    alert("Name must contain only alphabet characters");
+    return false;
+  }
+
+  if (password1.length < 8 || password1.length > 20) {
+    alert("Password length must be between 8 and 20 characters");
+    return false;
+  }  
+
+  if (name == "" || age == "" || email == "" || password1 == "" || password2 == "" || gender == null) {
+    alert("Please fill in all required fields.");
+    return false;
+  }
+
+  if (password1 !== password2) {
+    alert("Passwords do not match!");
+    return false;
+  }
+
+  return true;
+}
+
+	function clearForm() {
+      document.getElementById("registration-form").reset();
+	}
+  
+
+      
+    </script>
+  </body>
+</html>

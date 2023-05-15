@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+    <style>
+      body {
+        background: linear-gradient(to left, bisque, gainsboro,  lightyellow, papayawhip, lavenderblush, ivory);
+        color:black;
+        font-family: ariel, sans-serif;
+        font-size: 14px;
+      }
+
+      h3{
+        font-family: 'Times New Roman';
+        color:crimson;
+        font-size: 22px;
+      }
+      input[type="button"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 10px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+
+      input[type="email"]{
+        padding: 8px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 20%;
+        border-radius: 5px;
+        border: 2px solid black;
+      }
+
+     label[for="email_id"] {
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      fieldset{
+        font-size: 14px;
+        padding: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        width:60%;
+        margin: 10px left;
+        border-radius: 5px;
+        border: 2px solid black;
+      }
+
+      select{
+        width:25%;
+        padding: 6px;
+        font-size: 14px;
+        border: 2px solid black;
+      }
+
+      p{
+        font-size: 16px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h3>*** Answer all of these questions. <i>NOTE: These data will not be shared ! ***</i></h3>
+    <form id="quiz" method="POST" action="score.php">
+      <label for="email_id"><b>Enter your Email ID again : </b></label>
+      <input type="email" id="email_id" name="email_id" placeholder="Enter the same Email address" required><br><br>
+      <div><b>
+        <fieldset>
+          <legend>Question 1</legend>
+          <label>
+          <p>Overall how would you rate your physical health? </p>
+          <select name="q1" placeholder="answer">
+            <option></option>
+            <option value="10">Excellent</option>
+            <option value="7">Average</option>
+            <option value="5">Somewhat poor</option>
+            <option value="2">Poor</option>
+          </select></label>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 2</legend>
+          <p>Overall how would you rate your mental health?</p>
+          <select name="q2">
+            <option></option>
+            <option value="10">Excellent</option>
+            <option value="7">Average</option>
+            <option value="5">Somewhat poor</option>
+            <option value="2">Poor</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 3</legend>
+          <p>Have you felt particularly low or down for more than 2 weeks in a row?</p>
+          <select name="q3">
+            <option></option>
+            <option value="2">Very often</option>
+            <option value="5">Somewhat often</option>
+            <option value="7">Not so often</option>
+            <option value="10">Not at all</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 4</legend>
+          <p>During the past two weeks, how often has your mental health affected your relationships? </p>
+          <select name="q4">
+            <option></option>
+            <option value="2">Very often</option>
+            <option value="5">Somewhat often</option>
+            <option value="7">Not so often</option>
+            <option value="10">Not at all</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 5</legend>
+          <p>When was the last time you were really happy?</p>
+          <select name="q5">
+            <option></option>
+            <option value="10">Few days ago</option>
+            <option value="7">Few weeks ago</option>
+            <option value="5">Few months ago</option>
+            <option value="2">I don't remmeber</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 6</legend>
+          <p>Have you ever been diagonised with mental disorder before?</p>
+          <select name="q6">
+            <option></option>
+            <option value="3">Yes</option>
+            <option value="10">No</option>
+            <option value="7">Not sure</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 7</legend>
+          <p>How many hours do you sleep per day?</p>
+          <select name="q7">
+            <option></option>
+            <option value="2">Less than 4</option>
+            <option value="7">4-6</option>
+            <option value="10">7-9</option>
+            <option value="5">9+</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 8</legend>
+          <p>Do you feel happy with your relationships and family?</p>
+          <select name="q8">
+            <option></option>
+            <option value="10">Yes</option>
+            <option value="7">Sometimes</option>
+            <option value="3">No</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 9</legend>
+          <p>How has pandemic affected you mentally?</p>
+          <select name="q9">
+            <option></option>
+            <option value="3">Very bad</option>
+            <option value="7">Kind of bad</option>
+            <option value="10">Never got affected</option>
+          </select>
+        </fieldset><br>
+        <fieldset>
+          <legend>Question 10</legend>
+          <p>Is your education being affected by any of the mental health problems?</p>
+          <select name="q10">
+            <option></option>
+            <option value="10">Not at all</option>
+            <option value="7">Sometimes</option>
+            <option value="3">Always</option>
+          </select>
+        </fieldset><br><br>
+        </b>
+      <input type="hidden" id="total-score" name="score">
+      <input type="button" value="Submit" onclick="calculateScore(event)"><br>
+      </div>
+    </form>
+<br>
+
+    <script>
+      function calculateScore(event) {
+        event.preventDefault(); // prevent the form from submitting
+      
+        var q1Score = parseInt(document.querySelector('select[name="q1"]').value);
+        var q2Score = parseInt(document.querySelector('select[name="q2"]').value);
+        var q3Score = parseInt(document.querySelector('select[name="q3"]').value);
+        var q4Score = parseInt(document.querySelector('select[name="q4"]').value);
+        var q5Score = parseInt(document.querySelector('select[name="q5"]').value);
+        var q6Score = parseInt(document.querySelector('select[name="q6"]').value);
+        var q7Score = parseInt(document.querySelector('select[name="q7"]').value);
+        var q8Score = parseInt(document.querySelector('select[name="q8"]').value);
+        var q9Score = parseInt(document.querySelector('select[name="q9"]').value);
+        var q10Score = parseInt(document.querySelector('select[name="q10"]').value);
+        
+        var totalScore = (q1Score + q2Score + q3Score + q4Score + q5Score + q6Score + q7Score + q8Score + q9Score + q10Score)/10;
+        document.getElementById("total-score").value = totalScore;
+        document.getElementById("quiz").submit();
+
+        var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'submit_quiz.php', true);
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText);
+      alert(response.message);
+    }
+  };
+  xhr.send('email_id=' + encodeURIComponent(email_id) + '&score=' + encodeURIComponent(totalScore));
+}
+      
+    </script>
+    
+    </body>
+    </html>

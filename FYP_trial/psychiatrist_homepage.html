@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Psychiatrist Home Page</title>
+    </head>
+
+    
+<body>This is psychiatrist page...<br>
+
+    <?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "project";
+
+// Create connection
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve the names of all logged-in users
+$sql = "SELECT name FROM register WHERE is_logged_in = 1";
+$result = $conn->query($sql);
+
+// Store the names in an array
+$names = array();
+while ($row = $result->fetch_assoc()) {
+  $names[] = $row['name'];
+}
+
+// Calculate the total number of logged-in users
+$num_users = count($names);
+
+// Close the database connection
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Active Users</title>
+</head>
+<body>
+  <h1>Active Users</h1>
+  <p>Total number of users: <?php echo $num_users; ?></p>
+  <ul>
+    <?php foreach ($names as $name): ?>
+      <li><?php echo $name; ?></li>
+    <?php endforeach; ?>
+  </ul>
+</body>
+</html>
+
+
+<script>
+function getActiveUsers() {
+  // Make an AJAX request to the PHP script that retrieves the number of active users
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      // Update the active-users span with the number of active users
+      document.getElementById("active-users").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "get_active_users.php", true);
+  xhttp.send();
+}
+
+// Update the active user count every 10 seconds
+setInterval(getActiveUsers, 10000);
+</script>
+</body>
+</html>
